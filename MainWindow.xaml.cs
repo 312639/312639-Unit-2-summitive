@@ -1,6 +1,6 @@
 ﻿/*Cameron Heinz
- * March 26, 2019
- * texting translations
+ * March 29
+ * Convert time from Ottawa time to other noth amarican time zones
  */
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _312639TXTMSG
+namespace _312639GoodTimes
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -27,132 +27,55 @@ namespace _312639TXTMSG
         public MainWindow()
         {
             InitializeComponent();
+
+           
         }
 
-        private void btnTranslate_Click(object sender, RoutedEventArgs e)
+        private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            int numbOfLines = txtInput.LineCount;
-            for (int i = 0; i <= numbOfLines; i++)
+            string time = txtInput.Text;
+            int.TryParse(time, out int OttawaTime);
+
+            int Victoria = OttawaTime - 300;
+            int Edmonton = OttawaTime - 200;
+            int winnipeg = OttawaTime - 100;
+            int Toronto = OttawaTime;
+            int Halifax = OttawaTime + 100;
+            int StJohns = OttawaTime + 130;
+
+            if(StJohns >= 2459)
             {
-                
-                if (txtInput.Text.ToUpper() == "CU" || txtInput.Text.ToUpper() == "CU\r\n")
-                {
-                    lblOutput.Content = "SEE YOU";
-                }
-
-                else if (txtInput.Text.ToUpper() == "SEE YOU" || txtInput.Text.ToUpper() == "SEE YOU\r\n")
-                {
-                    lblOutput.Content = "CU";
-                }
-
-                if (txtInput.Text.ToUpper() == ";-)" || txtInput.Text.ToUpper() == ";-)\r\n")
-                {
-                    lblOutput.Content = "WINK";
-                }
-                else if (txtInput.Text.ToUpper() == "WINK" || txtInput.Text.ToUpper() == "WINK\r\n")
-                {
-                    lblOutput.Content = ";-)";
-                }
-
-                if (txtInput.Text.ToUpper() == ":-)" || txtInput.Text.ToUpper() == ":-)\r\n")
-                {
-                    lblOutput.Content = "I'M HAPPY";
-                }
-                else if (txtInput.Text.ToUpper() == "I'M HAPPY" || txtInput.Text.ToUpper() == "I'M HAPPY\r\n")
-                {
-                    lblOutput.Content = ":-)";
-                }
-
-                if (txtInput.Text.ToUpper() == ":-(" || txtInput.Text.ToUpper() == ":-(\r\n")
-                {
-                    lblOutput.Content = "I'M UNHAPPY";
-                }
-                else if (txtInput.Text.ToUpper() == "I'M UNHAPPY" || txtInput.Text.ToUpper() == "I'M UNHAPPY\r\n")
-                {
-                    lblOutput.Content = ":-(";
-                }
-
-                if (txtInput.Text.ToUpper() == ":-P" || txtInput.Text.ToUpper() == ":-P\r\n")
-                {
-                    lblOutput.Content = "STICK OUT MY TOUNG";
-                }
-                else if (txtInput.Text.ToUpper() == "STICK OUT MY TOUNG" || txtInput.Text.ToUpper() == "STICK OUT MY TOUNG\r\n")
-                {
-                    lblOutput.Content = ":-P";
-                }
-
-                if (txtInput.Text.ToUpper() == "˜.˜" || txtInput.Text.ToUpper() == "˜.˜\r\n")
-                {
-                    lblOutput.Content = "SLEEPY";
-                }
-                else if (txtInput.Text.ToUpper() == "SLEEPY" || txtInput.Text.ToUpper() == "SLEEPY\r\n")
-                {
-                    lblOutput.Content = "˜.˜";
-                }
-
-                if (txtInput.Text.ToUpper() == "TA" || txtInput.Text.ToUpper() == "TA\r\n")
-                {
-                    lblOutput.Content = "TOTALLY AWESOME";
-                }
-                else if (txtInput.Text.ToUpper() == "TOTALLY AWESOME" || txtInput.Text.ToUpper() == "TOTALLY AWESOME\r\n")
-                {
-                    lblOutput.Content = "TA";
-                }
-
-                if (txtInput.Text.ToUpper() == "CCC" || txtInput.Text.ToUpper() == "CCC\r\n")
-                {
-                    lblOutput.Content = "CANADIAN COMPUTING COMPITITION";
-                }
-                else if (txtInput.Text.ToUpper() == "CANADIAN COMPUTING COMPITITION" || txtInput.Text.ToUpper() == "CANADIAN COMPUTING COMPITITION\r\n")
-                {
-                    lblOutput.Content = "CCC";
-                }
-
-                if (txtInput.Text.ToUpper() == "CUZ" || txtInput.Text.ToUpper() == "CUZ\r\n")
-                {
-                    lblOutput.Content = "BECAUSE";
-                }
-                else if (txtInput.Text.ToUpper() == "BECAUSE" || txtInput.Text.ToUpper() == "BECAUSE\r\n")
-                {
-                    lblOutput.Content = "CUZ";
-                }
-
-                if (txtInput.Text.ToUpper() == "TY" || txtInput.Text.ToUpper() == "TY\r\n")
-                {
-                    lblOutput.Content = "THANK YOU";
-                }
-                else if (txtInput.Text.ToUpper() == "THANK YOU" || txtInput.Text.ToUpper() == "THANK YOU\r\n")
-                {
-                    lblOutput.Content = "TY";
-                }
-
-                if (txtInput.Text.ToUpper() == "YW" || txtInput.Text.ToUpper() == "YW\r\n")
-                {
-                    lblOutput.Content = "YOU'RE WELCOME";
-                }
-                else if (txtInput.Text.ToUpper() == "YOU'RE WELCOME" || txtInput.Text.ToUpper() == "YOU'RE WELCOME\r\n")
-                {
-                    lblOutput.Content = "YW";
-                }
-
-                if (txtInput.Text.ToUpper() == "TTYL" || txtInput.Text.ToUpper() == "TTYL\r\n")
-                {
-
-                    if (txtInput.Text.ToUpper() == "TTYL" || txtInput.Text.ToUpper() == "TTYL\r\n")
-                    {
-                        lblOutput.Content = "TALK TO YOU LATER";
-                    }
-                    else if (txtInput.Text.ToUpper() == "TALK TO YOU LATER" || txtInput.Text.ToUpper() == "TALK TO YOU LATER\r\n")
-                    {
-                        lblOutput.Content = "TTYL";
-                    }
-                    
-
-                    this.Close();
-
-                }
+                StJohns = StJohns -= 2400;
             }
-            
+            if (StJohns % 100 > 59) StJohns = StJohns -60 + 100;
+
+            if(Victoria <= 0)
+            {
+                Victoria = Victoria += 2400;
+            }
+            if (Victoria % 100 > 59) Victoria = Victoria - 60 + 100;
+
+            if(Edmonton <= 0)
+            {
+                Edmonton = Edmonton += 2400;
+            }
+            if (Edmonton % 100 > 59) Edmonton = Edmonton - 60 + 100;
+
+            if(winnipeg <= 0)
+            {
+                winnipeg = winnipeg += 2400;
+            }
+            if (winnipeg % 100 > 59) winnipeg = winnipeg - 60 + 100;
+
+            if(Halifax >= 2400)
+            {
+                Halifax = Halifax -= 2400;
+            }
+            if (Halifax % 100 > 59) Halifax = Halifax - 60 + 100;
+
+            if (Toronto % 100 > 59) Toronto = Toronto - 60 + 100;
+                
+            lblOutout.Content = "The time in Victoria is " + Victoria.ToString() + Environment.NewLine + "The time in Edmonton is " + Edmonton.ToString() + Environment.NewLine + "Teh time in Winnipeg is " + winnipeg.ToString() + Environment.NewLine + "The Time in Toronto is " + Toronto.ToString() + Environment.NewLine + "The time in Halifax is " + Halifax.ToString() + Environment.NewLine + "The time in St Johns is " + StJohns.ToString() + Environment.NewLine;
         }
     }
 }
