@@ -1,6 +1,6 @@
 ﻿/*Cameron Heinz
  * March 29
- * Convert time from Ottawa time to other noth amarican time zones
+ * Designed a T-Shirt using rectangles and Elipses.
  */
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _312639GoodTimes
+namespace _312639_T_Shirt_Drawing
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -28,54 +28,63 @@ namespace _312639GoodTimes
         {
             InitializeComponent();
 
+            Rectangle c = new Rectangle();
+            canvas.Children.Add(c);
+            c.Fill = Brushes.Yellow;
+            c.Height = 250;
+            c.Width = 200;
+            Canvas.SetLeft(c, 150);
+            Canvas.SetTop(c, 60);
+
+            Ellipse a = new Ellipse();
+            canvas.Children.Add(a);
+            a.Fill = Brushes.White;
+            a.Height = 100;
+            a.Width = 100;
+            Canvas.SetTop(a, 0);
+            Canvas.SetLeft(a, 200);
+
            
-        }
 
-        private void btnCalculate_Click(object sender, RoutedEventArgs e)
-        {
-            string time = txtInput.Text;
-            int.TryParse(time, out int OttawaTime);
 
-            int Victoria = OttawaTime - 300;
-            int Edmonton = OttawaTime - 200;
-            int winnipeg = OttawaTime - 100;
-            int Toronto = OttawaTime;
-            int Halifax = OttawaTime + 100;
-            int StJohns = OttawaTime + 130;
-
-            if(StJohns >= 2459)
+            for (int i = 7; i > 0; i--)
             {
-                StJohns = StJohns -= 2400;
-            }
-            if (StJohns % 100 > 59) StJohns = StJohns -60 + 100;
 
-            if(Victoria <= 0)
-            {
-                Victoria = Victoria += 2400;
-            }
-            if (Victoria % 100 > 59) Victoria = Victoria - 60 + 100;
+                Rectangle z = new Rectangle();
+                z.Height = i * 25;
+                z.Width = i * 25;
+                if (i % 2 == 0)
+                {
+                    z.Fill = Brushes.Blue;
+                }
+                else
+                {
+                    z.Fill = Brushes.Red;
+                }
 
-            if(Edmonton <= 0)
-            {
-                Edmonton = Edmonton += 2400;
-            }
-            if (Edmonton % 100 > 59) Edmonton = Edmonton - 60 + 100;
+                canvas.Children.Add(z);
+                Canvas.SetTop(z, 200 - (z.Width / 2));
+                Canvas.SetLeft(z, 250 - (z.Width / 2));
 
-            if(winnipeg <= 0)
-            {
-                winnipeg = winnipeg += 2400;
-            }
-            if (winnipeg % 100 > 59) winnipeg = winnipeg - 60 + 100;
+                Ellipse e = new Ellipse();
+                canvas.Children.Add(e);
+                e.Height = i * 25;
+                e.Width = i * 25;
+                if (i % 2 == 0)
+                {
+                    e.Fill = Brushes.Red;
+                }
+                else
+                {
+                    e.Fill = Brushes.Blue;
+                }
 
-            if(Halifax >= 2400)
-            {
-                Halifax = Halifax -= 2400;
-            }
-            if (Halifax % 100 > 59) Halifax = Halifax - 60 + 100;
+                Canvas.SetTop(e, 200 - ( e.Width / 2));
+                Canvas.SetLeft(e, 250 - ( e .Width / 2));
 
-            if (Toronto % 100 > 59) Toronto = Toronto - 60 + 100;
                 
-            lblOutout.Content = "The time in Victoria is " + Victoria.ToString() + Environment.NewLine + "The time in Edmonton is " + Edmonton.ToString() + Environment.NewLine + "Teh time in Winnipeg is " + winnipeg.ToString() + Environment.NewLine + "The Time in Toronto is " + Toronto.ToString() + Environment.NewLine + "The time in Halifax is " + Halifax.ToString() + Environment.NewLine + "The time in St Johns is " + StJohns.ToString() + Environment.NewLine;
+            }
+
+            }
         }
-    }
 }
